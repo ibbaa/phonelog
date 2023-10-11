@@ -67,7 +67,7 @@ Implementations of this interface are used for formatting the log messages for `
 
 ### JavaSystemLogger
 
-`JavaSystemLogger` delegates to `java.util.logging.Logger`, which essentially is the same as using `android.util.Log`, besides the log levels do not map 1:1, but `JavaSystemLogger` does the translation, so it's the same just as `android.util.Log` would be used. No constructor parameter is necessary, but some are provided:
+`JavaSystemLogger` delegates to `java.util.logging.Logger`, which essentially is the same as using `android.util.Log`, besides the log levels do not map 1:1, but `JavaSystemLogger` does the translation, so it's the same just as `android.util.Log` would be used. No constructor parameter is necessary, but some are available:
 
 - <i>maxLevel</i>: the max log level. Messages finer than this are not logged. Default is ERROR.
 - <i>handler</i>: an implementation of `java.util.logging.Handler`. Default is no handler.
