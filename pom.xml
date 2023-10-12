@@ -118,6 +118,7 @@
                             <descriptors>
                                 <descriptor>src/main/assembly/archive.xml</descriptor>
                             </descriptors>
+                             <attach>false</attach>
                         </configuration>
                     </execution>
                 </executions>
