@@ -8,7 +8,23 @@ The problem with Android logging is that on real devices you have to connect the
 
 ## Installation
 
-TODO: Publish to Maven central and provide example for Maven and Gradle
+<i>phonelog</i> is in Maven Central and can be added as a dependency to your project.
+
+Maven:
+
+```
+<dependency>
+    <groupId>net.ibbaa.phonelog</groupId>
+    <artifactId>phonelog</artifactId>
+    <version>1.0.1</version>
+</dependency>
+```
+Gradle:
+
+```
+implementation 'net.ibbaa.phonelog:phonelog:1.0.1'
+```
+The jar files are also released here on Github. 
 
 ## Signature
 
@@ -19,8 +35,6 @@ The released jar files are signed with GPG and can be verified as such:
 The necessary public key can be retrieved as such:
 
 `gpg --keyserver keyserver.ubuntu.com --recv-keys 05233A4E81F5C2BF94881F046F4B86DD15CBC5EC`
-
-TODO: Upload public key to keyserver.ubuntu.com
 
 ## Usage
 
