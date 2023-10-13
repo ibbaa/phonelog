@@ -6,6 +6,8 @@
     <groupId>net.ibbaa.phonelog</groupId>
     <artifactId>phonelog</artifactId>
     <packaging>jar</packaging>
+    <description>A simple logging facility for Android</description>
+    <url>https://github.com/ibbaa/phonelog</url>
   
     <version>1.0.0</version>
     <name>phonelog</name>
