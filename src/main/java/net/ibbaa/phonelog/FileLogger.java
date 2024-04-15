@@ -235,6 +235,7 @@ public class FileLogger implements ILogger {
     }
 
     /**
+     * Constructor
      * 
      * @param maxLevel         the max log level. Default is DEBUG.
      * @param maxFileSize      the max file size for rotating. Default is 10 MByte.
