@@ -89,8 +89,7 @@ public class AndroidSystemLogger implements ILogger {
 
     }
 
-    private void call(BiConsumer<String, String> consumer1, ThreeParameterConsumer<String, String, Throwable> consumer2,
-	    String tag, String message, Throwable throwable) {
+    private void call(BiConsumer<String, String> consumer1, ThreeParameterConsumer<String, String, Throwable> consumer2, String tag, String message, Throwable throwable) {
 	if (throwable != null) {
 	    consumer2.accept(tag, message, throwable);
 	} else {

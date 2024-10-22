@@ -22,8 +22,7 @@ public class LogFileEntry {
      * @param message   the message
      * @param throwable the Throwable
      */
-    public LogFileEntry(long timestamp, String thread, LogLevel level, String tag, String message,
-	    Throwable throwable) {
+    public LogFileEntry(long timestamp, String thread, LogLevel level, String tag, String message, Throwable throwable) {
 	this.timestamp = timestamp;
 	this.thread = thread;
 	this.level = level;
@@ -93,7 +92,6 @@ public class LogFileEntry {
      */
     @Override
     public String toString() {
-	return "LogFileEntry{" + "timestamp=" + timestamp + ", thread='" + thread + '\'' + ", level=" + level
-		+ ", tag='" + tag + '\'' + ", message='" + message + '\'' + ", throwable=" + throwable + '}';
+	return "LogFileEntry{" + "timestamp=" + timestamp + ", thread='" + thread + '\'' + ", level=" + level + ", tag='" + tag + '\'' + ", message='" + message + '\'' + ", throwable=" + throwable + '}';
     }
 }

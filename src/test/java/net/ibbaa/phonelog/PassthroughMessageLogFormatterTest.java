@@ -24,13 +24,11 @@ public class PassthroughMessageLogFormatterTest {
 	LogFileEntry entry = getTestEntry(getTestTimestamp(), "thread", LogLevel.DEBUG, "tag", "message", null);
 	String message = logFormatter.formatLogFileEntry(entry);
 	assertEquals("message" + System.lineSeparator(), message);
-	assertArrayEquals(message.getBytes(Charsets.UTF8_CHARSET),
-		logFormatter.formatLogFileEntry(entry, Charset.forName("UTF-8")));
+	assertArrayEquals(message.getBytes(Charsets.UTF8_CHARSET), logFormatter.formatLogFileEntry(entry, Charset.forName("UTF-8")));
 	entry = getTestEntry(1, null, LogLevel.DEBUG, null, "message", null);
 	message = logFormatter.formatLogFileEntry(entry);
 	assertEquals("message" + System.lineSeparator(), message);
-	assertArrayEquals(message.getBytes(Charsets.UTF8_CHARSET),
-		logFormatter.formatLogFileEntry(entry, Charset.forName("UTF-8")));
+	assertArrayEquals(message.getBytes(Charsets.UTF8_CHARSET), logFormatter.formatLogFileEntry(entry, Charset.forName("UTF-8")));
     }
 
     private long getTestTimestamp() {
@@ -39,8 +37,7 @@ public class PassthroughMessageLogFormatterTest {
 	return calendar.getTimeInMillis();
     }
 
-    private LogFileEntry getTestEntry(long timestamp, String thread, LogLevel level, String tag, String message,
-	    Throwable exc) {
+    private LogFileEntry getTestEntry(long timestamp, String thread, LogLevel level, String tag, String message, Throwable exc) {
 	return new LogFileEntry(timestamp, thread, level, tag, message, exc);
     }
 }

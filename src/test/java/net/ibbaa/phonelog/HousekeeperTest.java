@@ -56,8 +56,7 @@ public class HousekeeperTest {
 	createTestFile(logDir, "test6.log", "Test4Text");
 	files = logDir.listFiles();
 	assertEquals(6, files.length);
-	housekeeper = new Housekeeper(logDir.getAbsolutePath(), "test.log", 5, -1,
-		(File dir, String name) -> name.endsWith("txt"));
+	housekeeper = new Housekeeper(logDir.getAbsolutePath(), "test.log", 5, -1, (File dir, String name) -> name.endsWith("txt"));
 	housekeeper.doHousekeepingNow();
 	files = logDir.listFiles();
 	assertEquals(6, files.length);
@@ -66,8 +65,7 @@ public class HousekeeperTest {
     @Test
     public void testZipCreated() throws Exception {
 	File logDir = getTestLogFileFolder();
-	Housekeeper housekeeper = new Housekeeper(logDir.getAbsolutePath(), "test.log", 5, -1,
-		(File dir, String name) -> name.endsWith("txt"));
+	Housekeeper housekeeper = new Housekeeper(logDir.getAbsolutePath(), "test.log", 5, -1, (File dir, String name) -> name.endsWith("txt"));
 	createTestFile(logDir, "test1.txt", "Test1Text");
 	createTestFile(logDir, "test2.txt", "Test2Text");
 	createTestFile(logDir, "test3.txt", "Test3Text");
@@ -112,8 +110,7 @@ public class HousekeeperTest {
     @Test
     public void testDeleteArchive() throws Exception {
 	File logDir = getTestLogFileFolder();
-	Housekeeper housekeeper = new Housekeeper(logDir.getAbsolutePath(), "test.txt", 3, 3,
-		(File dir, String name) -> name.endsWith("txt"));
+	Housekeeper housekeeper = new Housekeeper(logDir.getAbsolutePath(), "test.txt", 3, 3, (File dir, String name) -> name.endsWith("txt"));
 	createTestFile(logDir, "test1.txt", "Test1Text");
 	createTestFile(logDir, "test2.txt", "Test2Text");
 	createTestFile(logDir, "test3.txt", "Test3Text");

@@ -33,8 +33,7 @@ public class DefaultLogFormatterTest {
 	LogFileEntry entry = getTestEntry(getTestTimestamp(), "thread", LogLevel.DEBUG, "tag", "message", null);
 	String message = defaultLogFormatter.formatLogFileEntry(entry);
 	assertEquals("1985-12-24 01:01:01.999 [thread] DEBUG tag: message" + System.lineSeparator(), message);
-	assertArrayEquals(message.getBytes(Charsets.UTF8_CHARSET),
-		defaultLogFormatter.formatLogFileEntry(entry, Charsets.UTF8_CHARSET));
+	assertArrayEquals(message.getBytes(Charsets.UTF8_CHARSET), defaultLogFormatter.formatLogFileEntry(entry, Charsets.UTF8_CHARSET));
 	try {
 	    throw new NullPointerException();
 	} catch (Exception exc) {
@@ -43,8 +42,7 @@ public class DefaultLogFormatterTest {
 	    assertTrue(message.startsWith("1985-12-24 01:01:01.999 [thread] DEBUG tag: message"));
 	    assertTrue(message.contains(NullPointerException.class.getName()));
 	    assertTrue(message.contains("at net.ibbaa.phonelog.DefaultLogFormatterTest.testFormatLogFileEntry"));
-	    assertArrayEquals(message.getBytes(Charsets.UTF8_CHARSET),
-		    defaultLogFormatter.formatLogFileEntry(entry, Charsets.UTF8_CHARSET));
+	    assertArrayEquals(message.getBytes(Charsets.UTF8_CHARSET), defaultLogFormatter.formatLogFileEntry(entry, Charsets.UTF8_CHARSET));
 	}
     }
 
@@ -53,8 +51,7 @@ public class DefaultLogFormatterTest {
 	LogFileEntry entry = getTestEntry(getTestTimestamp(), "thread", LogLevel.DEBUG, null, "message", null);
 	String message = defaultLogFormatter.formatLogFileEntry(entry);
 	assertEquals("1985-12-24 01:01:01.999 [thread] DEBUG: message" + System.lineSeparator(), message);
-	assertArrayEquals(message.getBytes(Charsets.UTF8_CHARSET),
-		defaultLogFormatter.formatLogFileEntry(entry, Charsets.UTF8_CHARSET));
+	assertArrayEquals(message.getBytes(Charsets.UTF8_CHARSET), defaultLogFormatter.formatLogFileEntry(entry, Charsets.UTF8_CHARSET));
     }
 
     private long getTestTimestamp() {
@@ -63,8 +60,7 @@ public class DefaultLogFormatterTest {
 	return calendar.getTimeInMillis();
     }
 
-    private LogFileEntry getTestEntry(long timestamp, String thread, LogLevel level, String tag, String message,
-	    Throwable exc) {
+    private LogFileEntry getTestEntry(long timestamp, String thread, LogLevel level, String tag, String message, Throwable exc) {
 	return new LogFileEntry(timestamp, thread, level, tag, message, exc);
     }
 }

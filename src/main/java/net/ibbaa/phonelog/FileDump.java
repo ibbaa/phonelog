@@ -29,8 +29,7 @@ public class FileDump implements IDump {
      * @param dumpDirectory directory to write dump files to
      */
     public FileDump(String dumpDirectory) {
-	this(dumpDirectory, DEFAULT_ARCHIVE_FILE_COUNT, DEFAULT_DELETE_FILE_COUNT, DEFAULT_DUMP_FILE_EXTENSION,
-		DEFAULT_EMPTY_MESSAGE);
+	this(dumpDirectory, DEFAULT_ARCHIVE_FILE_COUNT, DEFAULT_DELETE_FILE_COUNT, DEFAULT_DUMP_FILE_EXTENSION, DEFAULT_EMPTY_MESSAGE);
     }
 
     /**
@@ -40,8 +39,7 @@ public class FileDump implements IDump {
      * @param dumpFileExtension extension for dump files. Default is 'txt'.
      */
     public FileDump(String dumpDirectory, String dumpFileExtension) {
-	this(dumpDirectory, DEFAULT_ARCHIVE_FILE_COUNT, DEFAULT_DELETE_FILE_COUNT, dumpFileExtension,
-		DEFAULT_EMPTY_MESSAGE);
+	this(dumpDirectory, DEFAULT_ARCHIVE_FILE_COUNT, DEFAULT_DELETE_FILE_COUNT, dumpFileExtension, DEFAULT_EMPTY_MESSAGE);
     }
 
     /**
@@ -55,8 +53,7 @@ public class FileDump implements IDump {
      * @param dumpFileExtension extension for dump files. Default is 'txt'.
      * @param emptyMessage      message if nothing to dump
      */
-    public FileDump(String dumpDirectory, int archiveFileCount, int deleteFileCount, String dumpFileExtension,
-	    String emptyMessage) {
+    public FileDump(String dumpDirectory, int archiveFileCount, int deleteFileCount, String dumpFileExtension, String emptyMessage) {
 	this.archiveFileCount = archiveFileCount;
 	this.deleteFileCount = deleteFileCount;
 	this.dumpFileExtension = dumpFileExtension;
@@ -79,8 +76,7 @@ public class FileDump implements IDump {
 	}
 	LogFileEntry logEntry = null;
 	if (tag != null && message != null) {
-	    logEntry = new LogFileEntry(System.currentTimeMillis(), Thread.currentThread().getName(), LogLevel.DEBUG,
-		    tag, message, null);
+	    logEntry = new LogFileEntry(System.currentTimeMillis(), Thread.currentThread().getName(), LogLevel.DEBUG, tag, message, null);
 	}
 	Thread dumpThread = new Thread(new DumpThread(logEntry, baseFileName, source));
 	dumpThread.start();
@@ -119,13 +115,11 @@ public class FileDump implements IDump {
 		baseDumpFileName += "." + dumpFileExtension;
 		long timestamp = logEntry != null ? logEntry.getTimestamp() : System.currentTimeMillis();
 		String header = logEntry != null ? formatter.formatLogFileEntry(logEntry) : null;
-		String dumpFileName = fileManager.suffixFileName(baseDumpFileName,
-			fileManager.getTimestampSuffix(timestamp));
+		String dumpFileName = fileManager.suffixFileName(baseDumpFileName, fileManager.getTimestampSuffix(timestamp));
 		dumpFileName = fileManager.getValidFileName(dumpFolder, dumpFileName, null);
 		fileManager.writeListToFile(header, emptyMessage, objectsToDump, new File(dumpFolder, dumpFileName));
 		if (archiveFileCount > 0) {
-		    Housekeeper housekeeper = new Housekeeper(dumpDirectory, baseDumpFileName, archiveFileCount,
-			    deleteFileCount, new DumpFilenameFilter(baseDumpFileName));
+		    Housekeeper housekeeper = new Housekeeper(dumpDirectory, baseDumpFileName, archiveFileCount, deleteFileCount, new DumpFilenameFilter(baseDumpFileName));
 		    housekeeper.doHousekeepingNow();
 		}
 	    } catch (Exception exc) {

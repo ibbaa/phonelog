@@ -44,8 +44,7 @@ public class FileLogger implements ILogger {
      * @param logDirectory directory to write log files to
      */
     public FileLogger(String logDirectory) {
-	this(DEFAULT_LOG_LEVEL, DEFAULT_MAX_FILE_SIZE, DEFAULT_ARCHIVE_FILE_COUNT, DEFAULT_DELETE_FILE_COUNT,
-		logDirectory, DEFAULT_LOG_FILE_BASE_NAME, new DefaultLogFormatter(), null);
+	this(DEFAULT_LOG_LEVEL, DEFAULT_MAX_FILE_SIZE, DEFAULT_ARCHIVE_FILE_COUNT, DEFAULT_DELETE_FILE_COUNT, logDirectory, DEFAULT_LOG_FILE_BASE_NAME, new DefaultLogFormatter(), null);
     }
 
     /**
@@ -56,8 +55,7 @@ public class FileLogger implements ILogger {
      *                     as delegate. Default is <code>null</code>.
      */
     public FileLogger(String logDirectory, ILogger delegateLog) {
-	this(DEFAULT_LOG_LEVEL, DEFAULT_MAX_FILE_SIZE, DEFAULT_ARCHIVE_FILE_COUNT, DEFAULT_DELETE_FILE_COUNT,
-		logDirectory, DEFAULT_LOG_FILE_BASE_NAME, new DefaultLogFormatter(), delegateLog);
+	this(DEFAULT_LOG_LEVEL, DEFAULT_MAX_FILE_SIZE, DEFAULT_ARCHIVE_FILE_COUNT, DEFAULT_DELETE_FILE_COUNT, logDirectory, DEFAULT_LOG_FILE_BASE_NAME, new DefaultLogFormatter(), delegateLog);
     }
 
     /**
@@ -67,8 +65,7 @@ public class FileLogger implements ILogger {
      * @param logDirectory directory to write log files to
      */
     public FileLogger(int maxFileSize, String logDirectory) {
-	this(DEFAULT_LOG_LEVEL, maxFileSize, DEFAULT_ARCHIVE_FILE_COUNT, DEFAULT_DELETE_FILE_COUNT, logDirectory,
-		DEFAULT_LOG_FILE_BASE_NAME, new DefaultLogFormatter(), null);
+	this(DEFAULT_LOG_LEVEL, maxFileSize, DEFAULT_ARCHIVE_FILE_COUNT, DEFAULT_DELETE_FILE_COUNT, logDirectory, DEFAULT_LOG_FILE_BASE_NAME, new DefaultLogFormatter(), null);
     }
 
     /**
@@ -80,8 +77,7 @@ public class FileLogger implements ILogger {
      *                     as delegate. Default is <code>null</code>.
      */
     public FileLogger(int maxFileSize, String logDirectory, ILogger delegateLog) {
-	this(DEFAULT_LOG_LEVEL, maxFileSize, DEFAULT_ARCHIVE_FILE_COUNT, DEFAULT_DELETE_FILE_COUNT, logDirectory,
-		DEFAULT_LOG_FILE_BASE_NAME, new DefaultLogFormatter(), delegateLog);
+	this(DEFAULT_LOG_LEVEL, maxFileSize, DEFAULT_ARCHIVE_FILE_COUNT, DEFAULT_DELETE_FILE_COUNT, logDirectory, DEFAULT_LOG_FILE_BASE_NAME, new DefaultLogFormatter(), delegateLog);
     }
 
     /**
@@ -91,8 +87,7 @@ public class FileLogger implements ILogger {
      * @param logFileName  base name for log files. Default is 'app.log'.
      */
     public FileLogger(String logDirectory, String logFileName) {
-	this(DEFAULT_LOG_LEVEL, DEFAULT_MAX_FILE_SIZE, DEFAULT_ARCHIVE_FILE_COUNT, DEFAULT_DELETE_FILE_COUNT,
-		logDirectory, logFileName, new DefaultLogFormatter(), null);
+	this(DEFAULT_LOG_LEVEL, DEFAULT_MAX_FILE_SIZE, DEFAULT_ARCHIVE_FILE_COUNT, DEFAULT_DELETE_FILE_COUNT, logDirectory, logFileName, new DefaultLogFormatter(), null);
     }
 
     /**
@@ -104,8 +99,7 @@ public class FileLogger implements ILogger {
      *                     as delegate. Default is <code>null</code>.
      */
     public FileLogger(String logDirectory, String logFileName, ILogger delegateLog) {
-	this(DEFAULT_LOG_LEVEL, DEFAULT_MAX_FILE_SIZE, DEFAULT_ARCHIVE_FILE_COUNT, DEFAULT_DELETE_FILE_COUNT,
-		logDirectory, logFileName, new DefaultLogFormatter(), delegateLog);
+	this(DEFAULT_LOG_LEVEL, DEFAULT_MAX_FILE_SIZE, DEFAULT_ARCHIVE_FILE_COUNT, DEFAULT_DELETE_FILE_COUNT, logDirectory, logFileName, new DefaultLogFormatter(), delegateLog);
     }
 
     /**
@@ -119,8 +113,7 @@ public class FileLogger implements ILogger {
      * @param logDirectory     directory to write log files to
      */
     public FileLogger(int maxFileSize, int archiveFileCount, int deleteFileCount, String logDirectory) {
-	this(DEFAULT_LOG_LEVEL, maxFileSize, archiveFileCount, deleteFileCount, logDirectory,
-		DEFAULT_LOG_FILE_BASE_NAME, new DefaultLogFormatter(), null);
+	this(DEFAULT_LOG_LEVEL, maxFileSize, archiveFileCount, deleteFileCount, logDirectory, DEFAULT_LOG_FILE_BASE_NAME, new DefaultLogFormatter(), null);
     }
 
     /**
@@ -135,10 +128,8 @@ public class FileLogger implements ILogger {
      * @param delegateLog      an {@link net.ibbaa.phonelog.ILogger} implementation
      *                         used as delegate. Default is <code>null</code>.
      */
-    public FileLogger(int maxFileSize, int archiveFileCount, int deleteFileCount, String logDirectory,
-	    ILogger delegateLog) {
-	this(DEFAULT_LOG_LEVEL, maxFileSize, archiveFileCount, deleteFileCount, logDirectory,
-		DEFAULT_LOG_FILE_BASE_NAME, new DefaultLogFormatter(), delegateLog);
+    public FileLogger(int maxFileSize, int archiveFileCount, int deleteFileCount, String logDirectory, ILogger delegateLog) {
+	this(DEFAULT_LOG_LEVEL, maxFileSize, archiveFileCount, deleteFileCount, logDirectory, DEFAULT_LOG_FILE_BASE_NAME, new DefaultLogFormatter(), delegateLog);
     }
 
     /**
@@ -148,8 +139,7 @@ public class FileLogger implements ILogger {
      * @param logDirectory directory to write log files to
      */
     public FileLogger(LogLevel maxLevel, String logDirectory) {
-	this(maxLevel, DEFAULT_MAX_FILE_SIZE, DEFAULT_ARCHIVE_FILE_COUNT, DEFAULT_DELETE_FILE_COUNT, logDirectory,
-		DEFAULT_LOG_FILE_BASE_NAME, new DefaultLogFormatter(), null);
+	this(maxLevel, DEFAULT_MAX_FILE_SIZE, DEFAULT_ARCHIVE_FILE_COUNT, DEFAULT_DELETE_FILE_COUNT, logDirectory, DEFAULT_LOG_FILE_BASE_NAME, new DefaultLogFormatter(), null);
     }
 
     /**
@@ -161,8 +151,7 @@ public class FileLogger implements ILogger {
      *                     as delegate. Default is <code>null</code>.
      */
     public FileLogger(LogLevel maxLevel, String logDirectory, ILogger delegateLog) {
-	this(maxLevel, DEFAULT_MAX_FILE_SIZE, DEFAULT_ARCHIVE_FILE_COUNT, DEFAULT_DELETE_FILE_COUNT, logDirectory,
-		DEFAULT_LOG_FILE_BASE_NAME, new DefaultLogFormatter(), delegateLog);
+	this(maxLevel, DEFAULT_MAX_FILE_SIZE, DEFAULT_ARCHIVE_FILE_COUNT, DEFAULT_DELETE_FILE_COUNT, logDirectory, DEFAULT_LOG_FILE_BASE_NAME, new DefaultLogFormatter(), delegateLog);
     }
 
     /**
@@ -173,8 +162,7 @@ public class FileLogger implements ILogger {
      * @param logDirectory directory to write log files to
      */
     public FileLogger(LogLevel maxLevel, int maxFileSize, String logDirectory) {
-	this(maxLevel, maxFileSize, DEFAULT_ARCHIVE_FILE_COUNT, DEFAULT_DELETE_FILE_COUNT, logDirectory,
-		DEFAULT_LOG_FILE_BASE_NAME, new DefaultLogFormatter(), null);
+	this(maxLevel, maxFileSize, DEFAULT_ARCHIVE_FILE_COUNT, DEFAULT_DELETE_FILE_COUNT, logDirectory, DEFAULT_LOG_FILE_BASE_NAME, new DefaultLogFormatter(), null);
     }
 
     /**
@@ -187,8 +175,7 @@ public class FileLogger implements ILogger {
      *                     as delegate. Default is <code>null</code>.
      */
     public FileLogger(LogLevel maxLevel, int maxFileSize, String logDirectory, ILogger delegateLog) {
-	this(maxLevel, maxFileSize, DEFAULT_ARCHIVE_FILE_COUNT, DEFAULT_DELETE_FILE_COUNT, logDirectory,
-		DEFAULT_LOG_FILE_BASE_NAME, new DefaultLogFormatter(), delegateLog);
+	this(maxLevel, maxFileSize, DEFAULT_ARCHIVE_FILE_COUNT, DEFAULT_DELETE_FILE_COUNT, logDirectory, DEFAULT_LOG_FILE_BASE_NAME, new DefaultLogFormatter(), delegateLog);
     }
 
     /**
@@ -199,8 +186,7 @@ public class FileLogger implements ILogger {
      * @param logFileName  base name for log files
      */
     public FileLogger(LogLevel maxLevel, String logDirectory, String logFileName) {
-	this(maxLevel, DEFAULT_MAX_FILE_SIZE, DEFAULT_ARCHIVE_FILE_COUNT, DEFAULT_DELETE_FILE_COUNT, logDirectory,
-		logFileName, new DefaultLogFormatter(), null);
+	this(maxLevel, DEFAULT_MAX_FILE_SIZE, DEFAULT_ARCHIVE_FILE_COUNT, DEFAULT_DELETE_FILE_COUNT, logDirectory, logFileName, new DefaultLogFormatter(), null);
     }
 
     /**
@@ -213,8 +199,7 @@ public class FileLogger implements ILogger {
      *                     as delegate. Default is <code>null</code>.
      */
     public FileLogger(LogLevel maxLevel, String logDirectory, String logFileName, ILogger delegateLog) {
-	this(maxLevel, DEFAULT_MAX_FILE_SIZE, DEFAULT_ARCHIVE_FILE_COUNT, DEFAULT_DELETE_FILE_COUNT, logDirectory,
-		logFileName, new DefaultLogFormatter(), delegateLog);
+	this(maxLevel, DEFAULT_MAX_FILE_SIZE, DEFAULT_ARCHIVE_FILE_COUNT, DEFAULT_DELETE_FILE_COUNT, logDirectory, logFileName, new DefaultLogFormatter(), delegateLog);
     }
 
     /**
@@ -228,10 +213,8 @@ public class FileLogger implements ILogger {
      *                         be deleted. Default is -1 (no deleting).
      * @param logDirectory     directory to write log files to
      */
-    public FileLogger(LogLevel maxLevel, int maxFileSize, int archiveFileCount, int deleteFileCount,
-	    String logDirectory) {
-	this(maxLevel, maxFileSize, archiveFileCount, deleteFileCount, logDirectory, DEFAULT_LOG_FILE_BASE_NAME,
-		new DefaultLogFormatter(), null);
+    public FileLogger(LogLevel maxLevel, int maxFileSize, int archiveFileCount, int deleteFileCount, String logDirectory) {
+	this(maxLevel, maxFileSize, archiveFileCount, deleteFileCount, logDirectory, DEFAULT_LOG_FILE_BASE_NAME, new DefaultLogFormatter(), null);
     }
 
     /**
@@ -247,10 +230,8 @@ public class FileLogger implements ILogger {
      * @param delegateLog      an {@link net.ibbaa.phonelog.ILogger} implementation
      *                         used as delegate. Default is <code>null</code>
      */
-    public FileLogger(LogLevel maxLevel, int maxFileSize, int archiveFileCount, int deleteFileCount,
-	    String logDirectory, ILogger delegateLog) {
-	this(maxLevel, maxFileSize, archiveFileCount, deleteFileCount, logDirectory, DEFAULT_LOG_FILE_BASE_NAME,
-		new DefaultLogFormatter(), delegateLog);
+    public FileLogger(LogLevel maxLevel, int maxFileSize, int archiveFileCount, int deleteFileCount, String logDirectory, ILogger delegateLog) {
+	this(maxLevel, maxFileSize, archiveFileCount, deleteFileCount, logDirectory, DEFAULT_LOG_FILE_BASE_NAME, new DefaultLogFormatter(), delegateLog);
     }
 
     /**
@@ -270,8 +251,7 @@ public class FileLogger implements ILogger {
      * @param delegateLog      an {@link net.ibbaa.phonelog.ILogger} implementation
      *                         used as delegate. Default is <code>null</code>.
      */
-    public FileLogger(LogLevel maxLevel, int maxFileSize, int archiveFileCount, int deleteFileCount,
-	    String logDirectory, String logFileName, ILogFormatter logFormatter, ILogger delegateLog) {
+    public FileLogger(LogLevel maxLevel, int maxFileSize, int archiveFileCount, int deleteFileCount, String logDirectory, String logFileName, ILogFormatter logFormatter, ILogger delegateLog) {
 	this.maxLevel = maxLevel;
 	this.maxFileSize = maxFileSize;
 	this.archiveFileCount = archiveFileCount;
@@ -304,8 +284,7 @@ public class FileLogger implements ILogger {
 	    return;
 	}
 	try {
-	    LogFileEntry logEntry = new LogFileEntry(System.currentTimeMillis(), Thread.currentThread().getName(),
-		    level, tag, message, throwable);
+	    LogFileEntry logEntry = new LogFileEntry(System.currentTimeMillis(), Thread.currentThread().getName(), level, tag, message, throwable);
 	    logQueue.offer(logEntry, LOG_QUEUE_PUT_TIMEOUT, TimeUnit.MILLISECONDS);
 	    if (logThreadActive.compareAndSet(false, true)) {
 		Thread logThread = new Thread(this::doLog);
@@ -338,16 +317,14 @@ public class FileLogger implements ILogger {
 		fileSize += message.length;
 		if (fileSize >= maxFileSize) {
 		    closeLogStream(logStream);
-		    String newFileName = fileManager.getValidFileName(new File(logDirectory), logFileName,
-			    System.currentTimeMillis());
+		    String newFileName = fileManager.getValidFileName(new File(logDirectory), logFileName, System.currentTimeMillis());
 		    if (newFileName != null) {
 			if (logFile.renameTo(new File(new File(logDirectory), newFileName))) {
 			    logFile = new File(logDirectory, logFileName);
 			    fileSize = 0;
 			    logStream = initializeLogStream(logFile);
 			    if (archiveFileCount > 0) {
-				Housekeeper housekeeper = new Housekeeper(logDirectory, logFileName, archiveFileCount,
-					deleteFileCount, this::shouldBeArchived);
+				Housekeeper housekeeper = new Housekeeper(logDirectory, logFileName, archiveFileCount, deleteFileCount, this::shouldBeArchived);
 				Thread housekeeperThread = new Thread(housekeeper);
 				housekeeperThread.start();
 			    }

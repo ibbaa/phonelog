@@ -56,8 +56,7 @@ public class LogTest {
 	assertLogEntryEquals(mockLogger.getEntry(9), "tag10", "message10", LogLevel.WARN, exc);
     }
 
-    private void assertLogEntryEquals(LogFileEntry logEntry, String tag, String message, LogLevel level,
-	    Throwable exc) {
+    private void assertLogEntryEquals(LogFileEntry logEntry, String tag, String message, LogLevel level, Throwable exc) {
 	assertEquals(tag, logEntry.getTag());
 	assertEquals(message, logEntry.getMessage());
 	assertEquals(level, logEntry.getLevel());
