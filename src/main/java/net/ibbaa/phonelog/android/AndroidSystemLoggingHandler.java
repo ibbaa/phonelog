@@ -1,4 +1,4 @@
-package net.ibbaa.phonelog;
+package net.ibbaa.phonelog.android;
 
 import java.util.logging.Handler;
 import java.util.logging.Level;
@@ -15,10 +15,9 @@ public class AndroidSystemLoggingHandler extends Handler {
 	    return;
 	}
 	int level = getAndroidLevel(record.getLevel());
-	// android.util.Log.println(level, record.getLoggerName(), record.getMessage());
+	android.util.Log.println(level, record.getLoggerName(), record.getMessage());
 	if (record.getThrown() != null) {
-	    // android.util.Log.println(level, record.getLoggerName(),
-	    // android.util.Log.getStackTraceString(record.getThrown()));
+	    android.util.Log.println(level, record.getLoggerName(), android.util.Log.getStackTraceString(record.getThrown()));
 	}
     }
 

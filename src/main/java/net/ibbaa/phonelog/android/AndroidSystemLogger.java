@@ -1,6 +1,9 @@
-package net.ibbaa.phonelog;
+package net.ibbaa.phonelog.android;
 
 import java.util.function.BiConsumer;
+
+import net.ibbaa.phonelog.ILogger;
+import net.ibbaa.phonelog.LogLevel;
 
 /**
  * Template for {@link net.ibbaa.phonelog.ILogger} implementation delegating to
@@ -71,19 +74,19 @@ public class AndroidSystemLogger implements ILogger {
 	}
 	switch (level) {
 	case VERBOSE:
-	    // call(android.util.Log::v, android.util.Log::v, tag, message, throwable);
+	    call(android.util.Log::v, android.util.Log::v, tag, message, throwable);
 	    break;
 	case DEBUG:
-	    // call(android.util.Log::d, android.util.Log::d, tag, message, throwable);
+	    call(android.util.Log::d, android.util.Log::d, tag, message, throwable);
 	    break;
 	case INFO:
-	    // call(android.util.Log::i, android.util.Log::i, tag, message, throwable);
+	    call(android.util.Log::i, android.util.Log::i, tag, message, throwable);
 	    break;
 	case WARN:
-	    // call(android.util.Log::w, android.util.Log::w, tag, message, throwable);
+	    call(android.util.Log::w, android.util.Log::w, tag, message, throwable);
 	    break;
 	case ERROR:
-	    // call(android.util.Log::e, android.util.Log::e, tag, message, throwable);
+	    call(android.util.Log::e, android.util.Log::e, tag, message, throwable);
 	    break;
 	}
 
