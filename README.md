@@ -178,4 +178,14 @@ The constructor parameters are:
     <gpg.passphrase>the passphrase</gpg.passphrase>
 </properties>
 ```
-For the `net.ibbaa.phonelog.android` package, the necessary Android dependencies are marked as <i>provided</i> in the `pom.xml`. The Android core library is in Maven central but the `androidx.documentfile:documentfile` library is not, besides the fact that `androidx.documentfile:documentfile` is packaged as <i>aar</i>, which cannot be processed by standard Maven. The necassary plugin does require a full Android SDK installation and has many other drawbacks. So <i>phonelog</i> provides the script `install_androidx.sh`, which downloads the required library from Google, repackages the necessary classes as <i>aar</i> and installs this in the local Maven repository. This script can be executed as part of the build process before the Maven build.
+For the `net.ibbaa.phonelog.android` package, the necessary Android dependencies are marked as <i>provided</i> in the `pom.xml`. The Android core library is in Maven central but the `androidx.documentfile:documentfile` library is not, besides the fact that `androidx.documentfile:documentfile` is packaged as <i>aar</i>, which cannot be processed by standard Maven. The necassary plugin does require a full Android SDK installation and has many other drawbacks. So <i>phonelog</i> provides the script `install_androidx.sh`, which downloads the required library from Google, repackages the necessary classes as <i>aar</i> and installs this in the local Maven repository as
+
+```
+<dependency>
+    <groupId>net.ibbaa.phonelog.android</groupId>
+    <artifactId>documentfile_repackage</artifactId>
+    <version>1.0.1</version>
+</dependency>
+```
+
+This script can be executed as part of the build process before the Maven build.
