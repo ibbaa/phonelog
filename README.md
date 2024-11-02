@@ -69,7 +69,7 @@ The log levels are the same as in `android.util.Log`: VERBOSE, DEBUG, INFO, WARN
 
 ### FileLogger
 
-`FileLogger` takes the log directory in the only necessary constructor parameter. Log files go to this directory with the name `app.log`. In Android the app specific storage can be used, which can be obtained using `context.getExternalFilesDirs(null)` but generally, any directory with write permissions can be used and in older versions of Android, this can be nearly any directory of the external storage. After 10 MByte the log file is rotated and renamed to `app_timestamp.log`. After 50 log files the files are archived by creating a `app_timestamp.zip` file with the 50 log files. The archives are never deleted, but automatic deletion of older archives can be configured. This should be good for really excessive logging and while it can fill up storage, in practice apps can run for months or years before there's any real danger of running out of space, even without deletion. `FileLogger` is very fast by keeping log messages in a queue and processing them in the background.
+`FileLogger` takes the log directory in the only necessary constructor parameter. Log files go to this directory with the name `app.log`. In Android the app specific storage can be used, which can be obtained using `context.getExternalFilesDirs(null)` but generally, any directory with write permissions can be used and in older versions of Android, this can be nearly any directory of the external storage. After 10 MByte the log file is rotated and renamed to `app_timestamp.log`. After 50 log files the files are archived by creating a `app_timestamp.zip` file with the 50 log files. The archives are never deleted, but automatic deletion of older archives can be configured. This should be good for really excessive logging and while it can fill up storage, in practice apps can run for months or years before there's any real danger of running out of space, even without deletion. `FileLogger` is very fast by keeping log messages in a queue and processing them in the background. `FileLogger` can be used in pure Java applications.
 
 The constructor parameters are:
 
@@ -84,7 +84,7 @@ The constructor parameters are:
 
 ### DocumentFileLogger
 
-`DocumentFileLogger` relies on the Android storage access framework and is the designated way to get read and write permissions on arbitrary folders in recent version of Android. The <i>logDirectory</i> must be the string representation of an Android content uri pointing to a directory. How to use the storage access framework is documented in the Android [DocumentFile documentation](https://developer.android.com/training/data-storage/shared/documents-files). Access to a directory's contents is necessary with the `ACTION_OPEN_DOCUMENT_TREE` intent action and the flags `FLAG_GRANT_PERSISTABLE_URI_PERMISSION`, `FLAG_GRANT_READ_URI_PERMISSION` and `FLAG_GRANT_WRITE_URI_PERMISSION`. The resulting uri can be converted to a string using `toString()` and passed to the `DocumentFileLogger` as <i>logDirectory</i>. Besides that, everything else is identical to the [FileLogger](#filelogger).
+`DocumentFileLogger` relies on the Android storage access framework and is the designated way to get read and write permissions on arbitrary folders in recent version of Android. The <i>logDirectory</i> must be the string representation of an Android content uri pointing to a directory. How to use the storage access framework is documented in the Android [DocumentFile documentation](https://developer.android.com/training/data-storage/shared/documents-files). Access to a directory's contents is necessary with the `ACTION_OPEN_DOCUMENT_TREE` intent action and the flags `FLAG_GRANT_PERSISTABLE_URI_PERMISSION`, `FLAG_GRANT_READ_URI_PERMISSION` and `FLAG_GRANT_WRITE_URI_PERMISSION`. The resulting uri can be converted to a string using `toString()` and passed to the `DocumentFileLogger` as <i>logDirectory</i>. Besides that, everything else is identical to the [FileLogger](#filelogger). `DocumentFileLogger` only works for Android.
 
 The constructor parameters are:
 
@@ -119,7 +119,7 @@ A problem with Java system logging in Android is, that it ignores messages with 
 
 ### AndroidSystemLogger
 
-`AndroidSystemLogger` delegates to `android.util.Log` 1:1. No constructor parameter is necessary, but some are available:
+`AndroidSystemLogger` delegates to `android.util.Log` 1:1. `AndroidSystemLogger` only works for Android. No constructor parameter is necessary, but some are available:
 
 - <i>maxLevel</i>: the max log level. Messages finer than this are not logged. Default is ERROR.
 - <i>delegateLog</i>: an implementation of `net.ibbaa.phonelog.ILogger`. Log messages are forwarded to the delegate but are also processed by the logger.
