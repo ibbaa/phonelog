@@ -119,7 +119,7 @@ A problem with Java system logging in Android is, that it ignores messages with 
 
 ### AndroidSystemLogger
 
-`AndroidSystemLogger` delegates to `android.util.Log` 1:1. `AndroidSystemLogger` only works for Android. No constructor parameter is necessary, but some are available:
+`AndroidSystemLogger` delegates to `android.util.Log` 1:1. It only works for Android. No constructor parameter is necessary, but some are available:
 
 - <i>maxLevel</i>: the max log level. Messages finer than this are not logged. Default is ERROR.
 - <i>delegateLog</i>: an implementation of `net.ibbaa.phonelog.ILogger`. Log messages are forwarded to the delegate but are also processed by the logger.
