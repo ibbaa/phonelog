@@ -12,6 +12,13 @@ public class Dump {
     private static IDump dump;
 
     /**
+     * Constructor
+     */
+    public Dump() {
+
+    }
+
+    /**
      * Sets the {@link net.ibbaa.phonelog.IDump} implementation
      * 
      * @param dump the {@link net.ibbaa.phonelog.IDump} implementation

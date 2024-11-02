@@ -8,6 +8,13 @@ import java.nio.charset.Charset;
 public class PassthroughMessageLogFormatter implements ILogFormatter {
 
     /**
+     * Constructor
+     */
+    public PassthroughMessageLogFormatter() {
+
+    }
+
+    /**
      * Format the log entry
      * 
      * @param entry the log entry

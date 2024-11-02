@@ -22,6 +22,13 @@ public class DocumentFileManager {
     private final static int MAX_DUPLICATE_FILES = 99;
 
     /**
+     * Constructor
+     */
+    public DocumentFileManager() {
+
+    }
+
+    /**
      * Generate a valid file name by adding a suffix if duplicates are found
      * 
      * @param folder    the folder

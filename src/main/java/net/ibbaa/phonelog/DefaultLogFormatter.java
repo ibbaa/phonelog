@@ -15,6 +15,13 @@ public class DefaultLogFormatter implements ILogFormatter {
     private final static String LOG_TIMESTAMP_PATTERN = "yyyy-MM-dd HH:mm:ss.SSS";
 
     /**
+     * Constructor
+     */
+    public DefaultLogFormatter() {
+
+    }
+    
+    /**
      * Format the log entry
      * 
      * @param entry the log entry

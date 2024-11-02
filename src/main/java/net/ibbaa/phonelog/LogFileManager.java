@@ -24,6 +24,13 @@ public class LogFileManager {
     private final static String SUFFIX_FILE_PATTERN = "yyyy.MM.dd_HH_mm_ss.SSS";
 
     /**
+     * Constructor
+     */
+    public LogFileManager() {
+
+    }
+
+    /**
      * Returns the file extension
      * 
      * @param fileName the file name

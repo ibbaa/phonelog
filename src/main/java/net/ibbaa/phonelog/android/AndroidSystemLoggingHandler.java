@@ -9,6 +9,18 @@ import java.util.logging.LogRecord;
  */
 public class AndroidSystemLoggingHandler extends Handler {
 
+    /**
+     * Constructor
+     */
+    public AndroidSystemLoggingHandler() {
+
+    }
+
+    /**
+     * Publish a {@code LogRecord}.
+     * 
+     * @param record the log record
+     */
     @Override
     public void publish(LogRecord record) {
 	if (!super.isLoggable(record)) {

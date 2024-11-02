@@ -12,6 +12,13 @@ public class Log {
     private static ILogger logger;
 
     /**
+     * Constructor
+     */
+    public Log() {
+
+    }
+
+    /**
      * Sets the {@link net.ibbaa.phonelog.ILogger} implementation
      * 
      * @param logger the {@link net.ibbaa.phonelog.ILogger} implementation
