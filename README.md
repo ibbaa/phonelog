@@ -1,6 +1,6 @@
 # phonelog
 
-<i>phonelog</i> is a very simple logging facility for Java and Android. It can be used in any Java code, but it is primarily meant for Android and does provode some features only useable in Android.
+<i>phonelog</i> is a very simple logging facility for Java and Android. It can be used in any Java code, but it is primarily meant for Android and does provide some features only useable in Android.
 
 ## Motivation
 
