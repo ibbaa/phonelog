@@ -36,7 +36,7 @@
         <snapshotRepository>
             <id>central</id>
             <name>Nexus Snaphots Repository</name>
-            <url>https://central.sonatype.com/repository/maven-snapshots/ </url>
+            <url>https://central.sonatype.com/repository/maven-snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
   
