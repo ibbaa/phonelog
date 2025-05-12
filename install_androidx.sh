@@ -1,5 +1,5 @@
 #!/bin/sh
-export androidx_documentfile_version=1.0.1
+export androidx_documentfile_version=1.1.0
 rm -f ./target/documentfile-${androidx_documentfile_version}.aar
 rm -rf ./target/androidx_documentfile
 wget -q -P ./target https://dl.google.com/android/maven2/androidx/documentfile/documentfile/${androidx_documentfile_version}/documentfile-${androidx_documentfile_version}.aar
