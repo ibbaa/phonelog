@@ -184,7 +184,7 @@ For the `net.ibbaa.phonelog.android` package, the necessary Android dependencies
 <dependency>
     <groupId>net.ibbaa.phonelog.android</groupId>
     <artifactId>documentfile_repackage</artifactId>
-    <version>1.0.1</version>
+    <version>1.1.0</version>
 </dependency>
 ```
 
