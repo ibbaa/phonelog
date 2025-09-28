@@ -438,10 +438,16 @@ public class DocumentFileLogger implements ILogger {
 
     private DocumentFile getLogFile(DocumentFile documentLogDirectory, String fileName) {
 	DocumentFile documentLogFile = documentLogDirectory.findFile(fileName);
-	if (documentLogFile == null) {
-	    documentLogFile = documentLogDirectory.createFile(UNKNOWN_MIME_TYPE, fileName);
+	if (documentLogFile != null) {
+	    return documentLogFile;
 	}
-	return documentLogFile;
+	for (DocumentFile child : documentLogDirectory.listFiles()) {
+	    String name = child.getName();
+	    if (name != null && name.equalsIgnoreCase(fileName)) {
+		return child;
+	    }
+	}
+	return documentLogDirectory.createFile(UNKNOWN_MIME_TYPE, fileName);
     }
 
     private Context getContext() {

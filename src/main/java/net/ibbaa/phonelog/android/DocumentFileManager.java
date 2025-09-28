@@ -188,6 +188,12 @@ public class DocumentFileManager {
      * @return if the file exists
      */
     public boolean fileExists(DocumentFile folder, String fileName) {
-	return folder.findFile(fileName) != null;
+	for (DocumentFile child : folder.listFiles()) {
+	    String name = child.getName();
+	    if (name != null && name.equalsIgnoreCase(fileName)) {
+		return true;
+	    }
+	}
+	return false;
     }
 }
