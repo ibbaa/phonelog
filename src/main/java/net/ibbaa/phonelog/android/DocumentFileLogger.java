@@ -355,11 +355,12 @@ public class DocumentFileLogger implements ILogger {
 	ParcelFileDescriptor logFileDescriptor = null;
 	try {
 	    loggerLock.lock();
+	    String normalizedLogFileName = normalizeFileName(this.logFileName);
 	    DocumentFile documentLogDirectory = DocumentFile.fromTreeUri(getContext(), Uri.parse(logDirectory));
 	    if (documentLogDirectory == null) {
 		return;
 	    }
-	    DocumentFile documentLogFile = getLogFile(documentLogDirectory, logFileName);
+	    DocumentFile documentLogFile = getLogFile(documentLogDirectory, normalizedLogFileName);
 	    long fileSize = documentLogFile.length();
 	    logFileDescriptor = getLogFileDescriptor(documentLogFile);
 	    logStream = initializeLogStream(logFileDescriptor);
@@ -371,15 +372,15 @@ public class DocumentFileLogger implements ILogger {
 		fileSize += message.length;
 		if (fileSize >= maxFileSize) {
 		    closeLogStream(logFileDescriptor, logStream);
-		    String newFileName = fileManager.getValidFileName(documentLogDirectory, logFileName, System.currentTimeMillis());
+		    String newFileName = fileManager.getValidFileName(documentLogDirectory, normalizedLogFileName, System.currentTimeMillis());
 		    if (newFileName != null) {
 			if (documentLogFile.renameTo(newFileName)) {
-			    documentLogFile = getLogFile(documentLogDirectory, logFileName);
+			    documentLogFile = getLogFile(documentLogDirectory, normalizedLogFileName);
 			    fileSize = documentLogFile.length();
 			    logFileDescriptor = getLogFileDescriptor(documentLogFile);
 			    logStream = initializeLogStream(logFileDescriptor);
 			    if (archiveFileCount > 0) {
-				DocumentFileHousekeeper housekeeper = new DocumentFileHousekeeper(getContext(), logDirectory, logFileName, archiveFileCount, deleteFileCount, this::shouldBeArchived);
+				DocumentFileHousekeeper housekeeper = new DocumentFileHousekeeper(getContext(), logDirectory, normalizedLogFileName, archiveFileCount, deleteFileCount, this::shouldBeArchived);
 				Thread housekeeperThread = new Thread(housekeeper);
 				housekeeperThread.start();
 			    }
@@ -448,6 +449,15 @@ public class DocumentFileLogger implements ILogger {
 	    }
 	}
 	return documentLogDirectory.createFile(UNKNOWN_MIME_TYPE, fileName);
+    }
+
+    private String normalizeFileName(String fileName) {
+	if (fileName == null) {
+	    return DEFAULT_LOG_FILE_BASE_NAME;
+	}
+	fileName = fileName.replaceAll("/", "");
+	fileName = fileName.replaceAll("[:*?\"<>|]", "_");
+	return fileName;
     }
 
     private Context getContext() {

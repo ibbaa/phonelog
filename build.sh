@@ -1,2 +1,2 @@
-maven-enforcer-plugin#!/bin/sh
+#!/bin/sh
 mvn clean install -Psigning

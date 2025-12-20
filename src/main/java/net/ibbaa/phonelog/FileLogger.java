@@ -299,11 +299,12 @@ public class FileLogger implements ILogger {
 	OutputStream logStream = null;
 	try {
 	    loggerLock.lock();
+	    String normalizedLogFileName = normalizeFileName(this.logFileName);
 	    File logFolder = new File(logDirectory);
 	    if (!logFolder.exists()) {
 		logFolder.mkdirs();
 	    }
-	    File logFile = new File(logFolder, logFileName);
+	    File logFile = new File(logFolder, normalizedLogFileName);
 	    long fileSize = 0;
 	    if (logFile.exists()) {
 		fileSize = logFile.length();
@@ -317,14 +318,14 @@ public class FileLogger implements ILogger {
 		fileSize += message.length;
 		if (fileSize >= maxFileSize) {
 		    closeLogStream(logStream);
-		    String newFileName = fileManager.getValidFileName(new File(logDirectory), logFileName, System.currentTimeMillis());
+		    String newFileName = fileManager.getValidFileName(new File(logDirectory), normalizedLogFileName, System.currentTimeMillis());
 		    if (newFileName != null) {
 			if (logFile.renameTo(new File(new File(logDirectory), newFileName))) {
-			    logFile = new File(logDirectory, logFileName);
+			    logFile = new File(logDirectory, normalizedLogFileName);
 			    fileSize = 0;
 			    logStream = initializeLogStream(logFile);
 			    if (archiveFileCount > 0) {
-				Housekeeper housekeeper = new Housekeeper(logDirectory, logFileName, archiveFileCount, deleteFileCount, this::shouldBeArchived);
+				Housekeeper housekeeper = new Housekeeper(logDirectory, normalizedLogFileName, archiveFileCount, deleteFileCount, this::shouldBeArchived);
 				Thread housekeeperThread = new Thread(housekeeper);
 				housekeeperThread.start();
 			    }
@@ -357,6 +358,13 @@ public class FileLogger implements ILogger {
 
     private OutputStream initializeLogStream(File logFile) throws IOException {
 	return new BufferedOutputStream(new FileOutputStream(logFile, true));
+    }
+
+    private String normalizeFileName(String fileName) {
+	if (fileName == null) {
+	    return DEFAULT_LOG_FILE_BASE_NAME;
+	}
+	return fileName.replaceAll("/", "");
     }
 
     private void closeLogStream(OutputStream logstream) {
