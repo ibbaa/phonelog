@@ -16,7 +16,7 @@ Maven:
 <dependency>
     <groupId>net.ibbaa.phonelog</groupId>
     <artifactId>phonelog</artifactId>
-    <version>2.1.1</version>
+    <version>2.1.2</version>
 </dependency>
 ```
 Gradle:
