@@ -5,9 +5,10 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
@@ -22,7 +23,6 @@ public class FileLogger implements ILogger {
     private final static String DEFAULT_LOG_FILE_BASE_NAME = "app.log";
 
     private final static int LOG_QUEUE_PUT_TIMEOUT = 500;
-    private final static int LOG_QUEUE_TAKE_TIMEOUT = 1000;
 
     private final static ReentrantLock loggerLock = new ReentrantLock();
 
@@ -36,7 +36,7 @@ public class FileLogger implements ILogger {
     private final ILogger delegateLog;
 
     private final LinkedBlockingQueue<LogFileEntry> logQueue;
-    private final AtomicBoolean logThreadActive;
+    private final ExecutorService logExecutor;
 
     /**
      * Constructor
@@ -261,7 +261,7 @@ public class FileLogger implements ILogger {
 	this.logFormatter = logFormatter;
 	this.delegateLog = delegateLog;
 	this.logQueue = new LinkedBlockingQueue<>();
-	this.logThreadActive = new AtomicBoolean(false);
+	this.logExecutor = Executors.newSingleThreadExecutor();
     }
 
     /**
@@ -285,13 +285,12 @@ public class FileLogger implements ILogger {
 	}
 	try {
 	    LogFileEntry logEntry = new LogFileEntry(System.currentTimeMillis(), Thread.currentThread().getName(), level, tag, message, throwable);
-	    logQueue.offer(logEntry, LOG_QUEUE_PUT_TIMEOUT, TimeUnit.MILLISECONDS);
-	    if (logThreadActive.compareAndSet(false, true)) {
-		Thread logThread = new Thread(this::doLog);
-		logThread.start();
+	    boolean putSuccess = logQueue.offer(logEntry, LOG_QUEUE_PUT_TIMEOUT, TimeUnit.MILLISECONDS);
+	    if (putSuccess) {
+		logExecutor.execute(this::doLog);
 	    }
 	} catch (InterruptedException exc) {
-	    // Do nothing
+	    Thread.currentThread().interrupt();
 	}
     }
 
@@ -312,7 +311,7 @@ public class FileLogger implements ILogger {
 	    logStream = initializeLogStream(logFile);
 	    LogFileManager fileManager = new LogFileManager();
 	    LogFileEntry entry;
-	    while ((entry = logQueue.poll(LOG_QUEUE_TAKE_TIMEOUT, TimeUnit.MILLISECONDS)) != null) {
+	    while ((entry = logQueue.poll()) != null) {
 		byte[] message = logFormatter.formatLogFileEntry(entry, Charsets.UTF8_CHARSET);
 		logStream.write(message);
 		fileSize += message.length;
@@ -332,15 +331,12 @@ public class FileLogger implements ILogger {
 			} else {
 			    return;
 			}
-		    } else {
-			return;
 		    }
 		}
 	    }
 	} catch (Exception exc) {
 	    // Do nothing
 	} finally {
-	    logThreadActive.set(false);
 	    closeLogStream(logStream);
 	    loggerLock.unlock();
 	}
