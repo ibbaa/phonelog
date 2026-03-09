@@ -22,7 +22,7 @@ Maven:
 Gradle:
 
 ```
-implementation 'net.ibbaa.phonelog:phonelog:2.0.0'
+implementation 'net.ibbaa.phonelog:phonelog:2.1.2'
 ```
 The jar files are also released here on Github. 
 
