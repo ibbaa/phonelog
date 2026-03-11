@@ -16,13 +16,13 @@ Maven:
 <dependency>
     <groupId>net.ibbaa.phonelog</groupId>
     <artifactId>phonelog</artifactId>
-    <version>2.1.1</version>
+    <version>2.1.2</version>
 </dependency>
 ```
 Gradle:
 
 ```
-implementation 'net.ibbaa.phonelog:phonelog:2.0.0'
+implementation 'net.ibbaa.phonelog:phonelog:2.1.2'
 ```
 The jar files are also released here on Github. 
 
